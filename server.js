@@ -39,100 +39,21 @@ app.post("/getProducts", (req, res) =>{
 
 // Create an order
 app.post("/createOrder", (req, res) =>{
-    console.log("create order ran");
-    let dataObject2 = {
-        "partnerOrderReference": "MyReferenceNumber",
-        "orderCustomer": {  
-            "firstName": "John",  
-            "lastName": "Doe",  
-            "companyName": "ACME",  
-            "address1": "1 Acme Way",  
-            "address2": "",  
-            "city": "Livingston",  
-            "state": "MT",  
-            "postalCode": "59047",  
-            "countryCode": "US",  
-            "email": "jdoe@acme.com",  
-            "phone": "1234567890"  
-        },
-        "items": [  
-            {  
-                "itemSequenceNumber": 1,  
-                "productID": 1234,  
-                "quantity": 1000,  
-                "productionDays": 4,                    
-                "partnerItemReference": "MyItemReferenceID",
-                "itemFile": "http://www.yourdomain.com/files/printReadyArtwork1.pdf"  
-            }  
-        ],  
-        "shipments": [  
-            {  
-                "shipmentSequenceNumber": 1,  
-                "firstName": "John",  
-                "lastName": "Doe",  
-                "companyName": "ACME",  
-                "address1": "1 Acme Way",  
-                "address2": "",  
-                "city": "Livingston",  
-                "state": "MT",  
-                "postalCode": "59047",  
-                "countryCode": "US",  
-                "phone": "1234567890",  
-                "shippingMethod": "FDXG",
-                "IMBSerialNumber":"004543450"
-            }  
-        ],
-        "payments":[
-            {
-                "paymentMethod": "stripe",
-                "paymentID": "methodid",
-                "paymentAmount": 3.00
-            }
-        ],
-        "itemShipments":[
-            {
-                "itemSequenceNumber": 1,
-                "shipmentSequenceNumber":1
-            }
-        ],
-        "webhooks":[
-            {
-                "type":"status",
-                "callbackUri": "https://www.pfl.com/callback",
-                "callbackHeaders": {
-                    "header_field_sample1": "header_value_sample1",
-                    "header_field_sample2": "header_value_sample2"
-                }
-            }
-        ],
-        "billingVariables":[
-            {
-                "key":   "BillingVariable1Name",
-                "value": "BillingVariable1Value"
-            },
-            {
-                "key":   "BillingVariable2Name",
-                "value": "BillingVariable2Value"
-            }
-        ]
-    }
-    let dataObject3 = {
+    let user = req.body.userDetails;
+    let dataObject = {
         "partnerOrderReference": "MyReferenceNumber",
         "orderCustomer": {
-            "firstName": "John",
-            "lastName": "Doe",
-            "companyName": "ACME",
-            "address1": "1 Acme Way",
-            "address2": "",
-            "city": "Livingston",
-            "state": "MT",
-            "postalCode": "59047",
-            "countryCode": "US",
-            "email": "jdoe@acme.com",
-            "phone": "1234567890"
-        },
-        "orderTemplateData": {
-            "TemplateDataName": "test"
+            "firstName": user.firstName,
+            "lastName": user.lastName,
+            "companyName": user.companyName,
+            "address1": user.addressOne,
+            "address2": user.addressTwo,
+            "city": user.city,
+            "state": user.userState,
+            "postalCode": user.postalCode,
+            "countryCode": user.countryCode,
+            "email": user.email,
+            "phone": user.phone
         },
         "payments": [
             {
@@ -141,13 +62,14 @@ app.post("/createOrder", (req, res) =>{
                 "paymentID": "tok_103R4N2eZvKYlo2Cioqjklul"     
             }
         ],
-        "items": [
-            {
-                "itemSequenceNumber": 1,
-                "productID": 12755,
-                "quantity": 50,
-            }
-        ],
+        "items": req.body.orderDetails,
+        // "items": [
+        //     {
+        //         "itemSequenceNumber": 1,
+        //         "productID": 12755,
+        //         "quantity": 50,
+        //     }
+        // ],
         "shipments": [
             {
                 "shipmentSequenceNumber": 1,
@@ -172,7 +94,7 @@ app.post("/createOrder", (req, res) =>{
             headers : {
                 "Authorization" : `Basic ${process.env.AUTH_KEY}`
             },
-            body : dataObject3,
+            body : dataObject,
             json : true
         },
         function (error, response, body) {
