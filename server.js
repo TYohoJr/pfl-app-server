@@ -48,7 +48,7 @@ app.post("/createOrder", (req, res) => {
     let user = req.body.userDetails;
     let data = {
         // User details are obtained from the input fields on the front end and inserted into the cusomtr object
-        "partnerOrderReference": user.orderReference,
+        // "partnerOrderReference": user.orderReference,
         "orderCustomer":{
             "firstName":user.firstName,
             "lastName":user.lastName,
@@ -65,22 +65,22 @@ app.post("/createOrder", (req, res) => {
         // Items are an array of the selected products and all their info
         "items":req.body.orderProductInfo,
         // Shipment info is re-used from the user details above
-        "shipments": [
-            {
-                "shipmentSequenceNumber": 1,
-                "firstName": user.firstName,
-                "lastName": user.lastName,
-                "companyName": user.companyName,
-                "address1": user.addressOne,
-                "address2": user.addressTwo,
-                "city": user.city,
-                "state": user.userState,
-                "postalCode": user.postalCode,
-                "countryCode": user.countryCode,
-                "phone": user.phone,
-                "shippingMethod": "FDXG"
-            }
-        ]
+        // "shipments": [
+        //     {
+        //         "shipmentSequenceNumber": 1,
+        //         "firstName": user.firstName,
+        //         "lastName": user.lastName,
+        //         "companyName": user.companyName,
+        //         "address1": user.addressOne,
+        //         "address2": user.addressTwo,
+        //         "city": user.city,
+        //         "state": user.userState,
+        //         "postalCode": user.postalCode,
+        //         "countryCode": user.countryCode,
+        //         "phone": user.phone,
+        //         "shippingMethod": "FDXG"
+        //     }
+        // ]
     }
     request(
         {
