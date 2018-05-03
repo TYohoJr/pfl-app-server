@@ -46,6 +46,7 @@ app.post("/getProducts", (req, res) => {
 app.post("/createOrder", (req, res) => {
     // Simplify data structure
     let user = req.body.userDetails;
+    // Set the payload object with all the details of the order
     let data = {
         "OrderNumber": null,
         "PartnerOrderReference": "P196334",
@@ -80,6 +81,7 @@ app.post("/createOrder", (req, res) => {
             }
         ]
     }
+    // Send the order to the API
     request(
         {
             json: true,
