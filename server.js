@@ -31,12 +31,12 @@ app.post("/getProducts", (req, res) => {
             headers: {
                 "Authorization": `Basic ${process.env.AUTH_KEY}`
             },
-            json:true
+            json: true
         },
         function (error, response, body) {
             // Send all the products back to the front-end
             res.json({
-                body:body
+                body: body
             })
         }
     );
@@ -47,40 +47,38 @@ app.post("/createOrder", (req, res) => {
     // Simplify data structure
     let user = req.body.userDetails;
     let data = {
-        // User details are obtained from the input fields on the front end and inserted into the cusomtr object
-        // "partnerOrderReference": user.orderReference,
-        "orderCustomer":{
-            "firstName":user.firstName,
-            "lastName":user.lastName,
-            "companyName":user.companyName,
-            "address1":user.addressOne,
-            "address2":user.addressTwo,
-            "city":user.city,
-            "state":user.userState,
-            "postalCode":user.postalCode,
-            "countryCode":user.countryCode,
-            "email":user.email,
-            "phone":user.phone
+        "OrderNumber": null,
+        "PartnerOrderReference": "P196334",
+        "OrderCustomer": {
+            "FirstName": user.firstName,
+            "LastName": user.lastName,
+            "CompanyName": user.companyName,
+            "Address1": user.addressOne,
+            "Address2": user.addressTwo,
+            "City": user.city,
+            "State": user.userState,
+            "PostalCode": user.postalCode,
+            "CountryCode": user.countryCode,
+            "Email": user.email,
+            "Phone": user.phone
         },
-        // Items are an array of the selected products and all their info
-        "items":req.body.orderProductInfo,
-        // Shipment info is re-used from the user details above
-        // "shipments": [
-        //     {
-        //         "shipmentSequenceNumber": 1,
-        //         "firstName": user.firstName,
-        //         "lastName": user.lastName,
-        //         "companyName": user.companyName,
-        //         "address1": user.addressOne,
-        //         "address2": user.addressTwo,
-        //         "city": user.city,
-        //         "state": user.userState,
-        //         "postalCode": user.postalCode,
-        //         "countryCode": user.countryCode,
-        //         "phone": user.phone,
-        //         "shippingMethod": "FDXG"
-        //     }
-        // ]
+        "items": req.body.orderProductInfo,
+        "Shipments": [
+            {
+                "ShipmentSequenceNumber": 1,
+                "FirstName": user.firstName,
+                "LastName": user.lastName,
+                "CompanyName": user.companyName,
+                "Address1": user.addressOne,
+                "Address2": user.addressTwo,
+                "City": user.city,
+                "State": user.userState,
+                "PostalCode": user.postalCode,
+                "CountryCode": user.countryCode,
+                "Phone": user.phone,
+                "ShippingMethod": "FDXG"
+            }
+        ]
     }
     request(
         {
@@ -90,7 +88,7 @@ app.post("/createOrder", (req, res) => {
             headers: {
                 "Authorization": `Basic ${process.env.AUTH_KEY}`
             },
-            body : data
+            body: data
         },
         function (error, response, body) {
             // Send the order info or errors back to the front-end
