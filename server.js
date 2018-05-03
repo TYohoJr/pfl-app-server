@@ -49,7 +49,7 @@ app.post("/createOrder", (req, res) => {
     // Set the payload object with all the details of the order
     let data = {
         "OrderNumber": null,
-        "PartnerOrderReference": "P196334",
+        "PartnerOrderReference": user.orderReference,
         "OrderCustomer": {
             "FirstName": user.firstName,
             "LastName": user.lastName,
