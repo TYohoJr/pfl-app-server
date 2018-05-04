@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Server will listen on the PORT that is currently available
+// Server will listen on the PORT that is currently available (either development or production)
 app.listen(process.env.PORT, () => {
     console.log(`listening on port: ${process.env.PORT}`)
 })
@@ -34,7 +34,7 @@ app.post("/getProducts", (req, res) => {
             json: true
         },
         function (error, response, body) {
-            // Send all the products back to the front-end
+            // Send the array of products back to the front-end
             res.json({
                 body: body
             })
