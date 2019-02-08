@@ -1,7 +1,16 @@
 {
-  "main.css": "static/css/main.922027f2.css",
-  "main.css.map": "static/css/main.922027f2.css.map",
-  "main.js": "static/js/main.b897c857.js",
-  "main.js.map": "static/js/main.b897c857.js.map",
-  "static/media/pfl-logo.png": "static/media/pfl-logo.158a06ca.png"
+  "main.css": "/static/css/main.c924ab05.chunk.css",
+  "main.js": "/static/js/main.6ec37d1e.chunk.js",
+  "main.js.map": "/static/js/main.6ec37d1e.chunk.js.map",
+  "static/css/1.acf48ca2.chunk.css": "/static/css/1.acf48ca2.chunk.css",
+  "static/js/1.d49fbcd0.chunk.js": "/static/js/1.d49fbcd0.chunk.js",
+  "static/js/1.d49fbcd0.chunk.js.map": "/static/js/1.d49fbcd0.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/css/1.acf48ca2.chunk.css.map": "/static/css/1.acf48ca2.chunk.css.map",
+  "static/media/pfl-logo.png": "/static/media/pfl-logo.158a06ca.png",
+  "static/css/main.c924ab05.chunk.css.map": "/static/css/main.c924ab05.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.0f8838848d144bd4713fe54cf6a8b521.js": "/precache-manifest.0f8838848d144bd4713fe54cf6a8b521.js",
+  "service-worker.js": "/service-worker.js"
 }
